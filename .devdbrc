@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "/home/doris/Development/sqlalchemy-code-challenge-Dorisk830/lib/restaurants.db"
+  }
+]
