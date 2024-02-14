@@ -10,8 +10,7 @@ engine = create_engine('sqlite:///db/restaurants.db', echo=True)
 
 
 
-restaurant_user=Table(
-    #customers_users
+restaurant_user=Table(    
     'restaurant_users',
     Base.metadata,
     Column('restaurant_id',ForeignKey('restaurants.id'),primary_key=True),
@@ -60,13 +59,13 @@ class Customer(Base):
 
     def get_reviews(self):
         """
-        Returns a collection of all the reviews that the Customer has left.
+        Returns a collection of all reviews.
         """
         return self.reviews
     
     def get_restaurants(self):
         """
-        Returns a collection of all the restaurants that the Customer has reviewed.
+        Returns a collection of the restaurants.
         """
         return self.restaurants
 
@@ -85,12 +84,12 @@ class Restaurant(Base):
 
     def get_reviews(self):
         """
-        Returns a collection of all the reviews for the Restaurant.
+        Returns a collection of reviews for the Restaurant.
         """
         return self.reviews
 
     def get_customers(self):
         """
-        Returns a collection of all the customers who reviewed the Restaurant.
+        Returns a collection of customers who reviewed the Restaurant.
         """
         return self.customers

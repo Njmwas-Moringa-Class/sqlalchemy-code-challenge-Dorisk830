@@ -6,19 +6,9 @@ from models import Base, Restaurant, Customer, Review
 engine = create_engine('sqlite:///db/restaurants.db')
 Base.metadata.bind = engine
 
-# Create a session to interact with the database
+# Create a session to interract with db
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
-# Seed data for restaurants
-restaurant1 = Restaurant(name='Restaurant 1', price=10)
-restaurant2 = Restaurant(name='Restaurant 2', price=20)
-restaurant3 = Restaurant(name='Restaurant 3', price=30)
-restaurant4 = Restaurant(name='Restaurant 4', price=40)
-restaurant5 = Restaurant(name='Restaurant 5', price=50)
-
-session.add_all([restaurant1, restaurant2, restaurant3, restaurant4, restaurant5 ])
-session.commit()
 
 # Seed data for customers
 customer1 = Customer(first_name='Doris', last_name='Jeptoo')
@@ -28,6 +18,16 @@ customer4 = Customer(first_name='Gideon', last_name='Limo')
 customer5 = Customer(first_name='Idah', last_name='Jepkurui')
 
 session.add_all([customer1, customer2, customer3, customer4, customer5 ])
+session.commit()
+
+# Seed data for restaurants
+restaurant1 = Restaurant(name='Restaurant 1', price=10)
+restaurant2 = Restaurant(name='Restaurant 2', price=20)
+restaurant3 = Restaurant(name='Restaurant 3', price=30)
+restaurant4 = Restaurant(name='Restaurant 4', price=40)
+restaurant5 = Restaurant(name='Restaurant 5', price=50)
+
+session.add_all([restaurant1, restaurant2, restaurant3, restaurant4, restaurant5 ])
 session.commit()
 
 # Seed data for reviews
