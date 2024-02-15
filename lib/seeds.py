@@ -6,7 +6,7 @@ from models import Base, Restaurant, Customer, Review
 engine = create_engine('sqlite:///db/restaurants.db')
 Base.metadata.bind = engine
 
-# Create a session to interract with db
+# Create a session to interact with db
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
@@ -17,7 +17,7 @@ customer3 = Customer(first_name='Weldon', last_name='Korir')
 customer4 = Customer(first_name='Gideon', last_name='Limo')
 customer5 = Customer(first_name='Idah', last_name='Jepkurui')
 
-session.add_all([customer1, customer2, customer3, customer4, customer5 ])
+session.add_all([customer1, customer2, customer3, customer4, customer5])
 session.commit()
 
 # Seed data for restaurants
@@ -27,7 +27,23 @@ restaurant3 = Restaurant(name='Restaurant 3', price=30)
 restaurant4 = Restaurant(name='Restaurant 4', price=40)
 restaurant5 = Restaurant(name='Restaurant 5', price=50)
 
-session.add_all([restaurant1, restaurant2, restaurant3, restaurant4, restaurant5 ])
+session.add_all([restaurant1, restaurant2, restaurant3, restaurant4, restaurant5])
+session.commit()
+
+# Seed data for restaurant_users
+# Establish the many-to-many relationship between customers and restaurants
+restaurant1.customers.append(customer1)
+restaurant2.customers.append(customer2)
+restaurant3.customers.append(customer3)
+restaurant4.customers.append(customer4)
+restaurant5.customers.append(customer5)
+
+# session.execute(restaurant_user.insert().values(restaurant_id=restaurant1.id, customer_id=customer1.id))
+# session.execute(restaurant_user.insert().values(restaurant_id=restaurant2.id, customer_id=customer2.id))
+# session.execute(restaurant_user.insert().values(restaurant_id=restaurant3.id, customer_id=customer3.id))
+# session.execute(restaurant_user.insert().values(restaurant_id=restaurant4.id, customer_id=customer4.id))
+# session.execute(restaurant_user.insert().values(restaurant_id=restaurant5.id, customer_id=customer5.id))
+
 session.commit()
 
 # Seed data for reviews

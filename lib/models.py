@@ -70,5 +70,4 @@ class Restaurant(Base):
     def get_customers(self):
         return self.customers
 
-# Add this line to create tables
 Base.metadata.create_all(engine)
